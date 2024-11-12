@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "design_patterns_demo",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

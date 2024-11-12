@@ -1,0 +1,19 @@
+meta {
+  name: update_book
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:8080/books/:bookId?isbn=1
+  body: none
+  auth: none
+}
+
+params:query {
+  isbn: 1
+}
+
+params:path {
+  bookId: 65b699c4-64bb-40de-88f9-e3dde06c6756
+}

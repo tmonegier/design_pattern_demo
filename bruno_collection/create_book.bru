@@ -1,0 +1,19 @@
+meta {
+  name: create_book
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:8080/jpa/books
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "Les 3 Mousquetaires",
+    "isbn": "9782253008880",
+    "authorId": "f9a297c0-a4f4-4fda-927b-8c7331787e68"
+  }
+}

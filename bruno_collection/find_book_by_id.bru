@@ -1,0 +1,19 @@
+meta {
+  name: find_book_by_id
+  type: http
+  seq: 3
+}
+
+get {
+  url: http://localhost:8080/books/:bookId
+  body: none
+  auth: none
+}
+
+params:path {
+  bookId: 65b699c4-64bb-40de-88f9-e3dde06c6756
+}
+
+headers {
+  X-User-Id: 49be5b27-416d-487f-b133-9d639ff7c9b8
+}

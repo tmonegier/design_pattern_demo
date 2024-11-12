@@ -1,0 +1,70 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: thibaultm
+      changes:
+        - createTable:
+            tableName: author
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: birthdate
+                  type: DATE
+
+  - changeSet:
+      id: 2
+      author: thibaultm
+      changes:
+        - createTable:
+            tableName: books
+            columns:
+              - column:
+                  name: id
+                  type: UUID
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: title
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: isbn
+                  type: VARCHAR(13)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: author_id
+                  type: UUID
+              - column:
+                  name: status
+                  type: VARCHAR(255)
+        - addForeignKeyConstraint:
+            baseTableName: books
+            baseColumnNames: author_id
+            referencedTableName: author
+            referencedColumnNames: id
+            constraintName: FK_books_author
+
+  - changeSet:
+      id: 3
+      author: thibaultm
+      changes:
+        - sql:
+            INSERT INTO author (id, name) VALUES ('49be5b27-416d-487f-b133-9d639ff7c9b8', 'Victor Hugo');
+            INSERT INTO author (id, name) VALUES ('f9a297c0-a4f4-4fda-927b-8c7331787e68', 'Alexandre Dumas');
+            INSERT INTO books (id, title, isbn, author_id, status) VALUES ('65b699c4-64bb-40de-88f9-e3dde06c6756', 'Le comte de Monte Cristo', '9782072895647', 'f9a297c0-a4f4-4fda-927b-8c7331787e68', 'VALIDATED');
+            INSERT INTO books (id, title, isbn, author_id, status) VALUES ('e783eee2-daa0-4ce3-b30a-d5a2382fc7b2', 'Les 3 Mousquetaires', '9782072895646', 'f9a297c0-a4f4-4fda-927b-8c7331787e68', 'VALIDATED');
+            INSERT INTO books (id, title, isbn, author_id, status) VALUES ('74e70d95-d265-4db6-91ae-78e67867cc01', 'Notre Dame de Paris', '9782253009689', '49be5b27-416d-487f-b133-9d639ff7c9b8', 'VALIDATED');
+
